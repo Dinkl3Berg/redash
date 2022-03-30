@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.pythonPath": "/home/dinkl3/miniconda3/envs/pypycashflow/bin/python"
+	}
+}

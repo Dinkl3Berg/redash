@@ -1,0 +1,22 @@
+FROM arm64v8/python:3.9.5-alpine
+
+WORKDIR /usr/src/app
+
+ENV PYTHONPATH /usr/lib/python3.9/site-packages
+RUN apk update && apk add --no-cache \
+        libpq && \
+    apk add --no-cache  \
+        gcc \
+        make \
+        g++ \
+        python3-dev \
+        musl-dev \
+        libffi-dev \
+        openssl-dev \
+        postgresql-dev \
+    && pip3 install --no-cache-dir \
+        wheel \
+        setuptools \
+        numpy \
+        pandas \
+    && apk del gcc g++ make

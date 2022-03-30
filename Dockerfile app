@@ -1,0 +1,23 @@
+FROM dinkl3berg/imagepandas:latest
+
+WORKDIR /usr/src/app
+
+ENV PYTHONPATH /usr/lib/python3.9/site-packages
+#RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk update && \
+    apk add --no-cache  \
+        gcc \
+        make \
+        g++ 
+RUN pip3 install --no-cache-dir \
+        dash \
+        psycopg2-binary \
+        requests \
+        dash-bootstrap-components 
+RUN apk del gcc g++ make 
+
+EXPOSE 8050
+
+COPY . .
+
+CMD ["python", "app.py"]
